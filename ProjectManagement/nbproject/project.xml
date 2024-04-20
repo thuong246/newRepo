@@ -26,14 +26,6 @@
             </web-module-libraries>
             <web-module-additional-libraries>
                 <library dirs="200">
-                    <file>${file.reference.jakarta.servlet.jsp.jstl-2.0.0.jar}</file>
-                    <path-in-war>/</path-in-war>
-                </library>
-                <library dirs="200">
-                    <file>${file.reference.jakarta.servlet.jsp.jstl-api-2.0.0.jar}</file>
-                    <path-in-war>/</path-in-war>
-                </library>
-                <library dirs="200">
                     <file>${file.reference.sqljdbc42.jar}</file>
                     <path-in-war>/</path-in-war>
                 </library>
@@ -45,5 +37,6 @@
                 <root id="test.src.dir"/>
             </test-roots>
         </data>
+        <libraries xmlns="http://www.netbeans.org/ns/cdnjs-libraries/1"/>
     </configuration>
 </project>

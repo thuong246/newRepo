@@ -229,6 +229,48 @@ public class ProjectDao extends BaseDao {
         }
         return list;
     }
+    public void updateEmployee(Employee p) {
+        String updateProjectQuery = "UPDATE Employees SET employee_code = ?,  employee_name = ? WHERE Employee_id = ?";
+        try ( PreparedStatement updateProjectStmt = connection.prepareStatement(updateProjectQuery)) {
+            updateProjectStmt.setString(1, p.getEmployee_code());
+            updateProjectStmt.setString(2, p.getEmployee_name());
+            updateProjectStmt.setString(3, p.getEmployee_id());
+            updateProjectStmt.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("updateEmployee:" + e.getMessage());
+        }
+    }
+
+    public Employee getEmployeebyId(String empid) {
+        Employee p = new Employee();
+        try {
+            String strSelect = "select * from Employees where employee_id =?";
+            pstm = connection.prepareStatement(strSelect);
+            pstm.setString(1, empid);
+            rs = pstm.executeQuery();
+            while (rs.next()) {
+                p.setEmployee_id(rs.getString(1));
+                p.setEmployee_code(rs.getString(2));
+                p.setEmployee_name(rs.getString(3));
+            }
+        } catch (Exception e) {
+            System.out.println("getEmployeebyId: " + e.getMessage());
+        }
+        return p;
+    }
+
+    public void AddEmployee(Employee p) {
+        String addProjectQuery = "INSERT INTO Employees(Employee_code,Employee_name)"
+                + "VALUES"
+                + "(?,?)";
+        try ( PreparedStatement updateProjectStmt = connection.prepareStatement(addProjectQuery)) {
+            updateProjectStmt.setString(1, p.getEmployee_code());
+            updateProjectStmt.setString(2, p.getEmployee_name());
+            updateProjectStmt.executeUpdate();
+        }catch (Exception e) {
+            System.out.println("AddEmployee: " + e.getMessage());
+        }
+    }
 
     
 

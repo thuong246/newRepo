@@ -48,6 +48,22 @@
         <servlet-name>MenuController</servlet-name>
         <servlet-class>controller.MenuController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Employee</servlet-name>
+        <servlet-class>controller.EmployeeController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddEmployee</servlet-name>
+        <servlet-class>controller.AddEmployee</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateEmployee</servlet-name>
+        <servlet-class>controller.UpdateEmployee</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>WorkProgress</servlet-name>
+        <servlet-class>controller.WorkProgress</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -95,6 +111,22 @@
     <servlet-mapping>
         <servlet-name>MenuController</servlet-name>
         <url-pattern>/menu</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Employee</servlet-name>
+        <url-pattern>/employee</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddEmployee</servlet-name>
+        <url-pattern>/addemployee</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateEmployee</servlet-name>
+        <url-pattern>/updateemployee</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>WorkProgress</servlet-name>
+        <url-pattern>/workprogress</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
