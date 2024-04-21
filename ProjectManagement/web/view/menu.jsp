@@ -53,7 +53,6 @@
                 <%@include file="sidebar.jsp" %>
             </nav>
             <!-- sidebar-wrapper  -->
-
             <!-- Start Page Content -->
             <main class="page-content bg-light">
                 <%@include file="headersidebar.jsp" %>

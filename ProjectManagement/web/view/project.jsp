@@ -100,16 +100,6 @@
                             <div class="col-lg-5 col-md-6 mt-4 mt-md-0">
                                 <div class="row">
                                     <div class="col-lg-8 col-md-7">
-                                        <div class="search-bar p-0 d-none d-lg-block ms-2">
-                                            <div id="search" class="menu-search mb-0">
-                                                <form role="search" method="get" id="searchform" class="searchform">
-                                                    <div>
-                                                        <input type="text" class="form-control border rounded-pill" name="s" id="s" placeholder="Search Keywords...">
-                                                        <input type="submit" id="searchsubmit" value="Search">
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
                                     </div>
 
                                     <div class="col-lg-4 col-md-5">
@@ -126,7 +116,7 @@
                         <div class="row">
                             <div class="col-12 mt-4">
                                 <div class="table-responsive bg-white shadow rounded">
-                                    <table class="table mb-0 table-center">
+                                    <table class="table mb-0 table-center" id="myTable">
                                         <thead>
                                             <tr>
                                                 <th class="border-bottom p-3" style="min-width: 50px;">#</th>
@@ -155,14 +145,16 @@
                                                     </td>
                                                     <td class="border-bottom p-3" style="min-width: 70px;">
                                                         <a href="/ProjectManagement/updateproject?mod=1&project_id=${i.getProject_id()}" class="btn btn-icon btn-pills btn-soft-success"><i class="uil uil-pen"></i></a>
-                                                        <a href="#" class="btn btn-icon btn-pills btn-soft-danger" data-bs-toggle="modal" data-bs-target="#cancelappointment"><i class="uil uil-trash"></i></a>
-
+                                                        <a href="#" class="btn btn-icon btn-pills btn-soft-danger" onclick="deleteUser('${i.getProject_id()}')"><i class="uil uil-trash" ></i></a>
                                                     </td>
                                                 </tr>
                                             </c:forEach> 
-
                                         </tbody>
                                     </table>
+                                    <form id="delete" action="updateproject?action=delete" method="post">
+                                        <input id="project_id" type="hidden" name="project_id">
+                                    </form>
+
                                 </div>
                             </div>
                         </div><!--end row-->
@@ -171,7 +163,6 @@
                             <!-- PAGINATION START -->
                             <div class="col-12 mt-4">
                                 <div class="d-md-flex align-items-center text-center justify-content-between">
-                                    <span class="text-muted me-3">Showing 1 - 10 out of 50</span>
                                     <ul class="pagination justify-content-center mb-0 mt-3 mt-sm-0">
                                         <li class="page-item"><a class="page-link" href="javascript:void(0)" aria-label="Previous">Prev</a></li>
                                         <li class="page-item active"><a class="page-link" href="javascript:void(0)">1</a></li>
@@ -287,10 +278,10 @@
                                 <i class="uil uil-times-circle h1 mb-0"></i>
                             </div>
                             <div class="mt-4">
-                                <h4>Cancel Appointment</h4>
-                                <p class="para-desc mx-auto text-muted mb-0">Great doctor if you need your family member to get immediate assistance, emergency treatment.</p>
+                                <h4>Delete Project</h4>
+                                <p class="para-desc mx-auto text-muted mb-0">Do you want to delete this project?</p>
                                 <div class="mt-4">
-                                    <a href="#" class="btn btn-soft-danger">Cancel</a>
+                                    <a href="" class="btn btn-soft-danger">Cancel</a>
                                 </div>
                             </div>
                         </div>
@@ -319,6 +310,16 @@
         <script src="assets/js/feather.min.js"></script>
         <!-- Main Js -->
         <script src="assets/js/app.js"></script>
+        <script>
+            //delete user
+            function deleteUser(x) {
+                //confirm
+                if (confirm('Do you want to remove with Id:' + x) === true) {
+                    document.getElementById('project_id').value = x;
+                    document.getElementById('delete').submit();
+                }
+            }
+        </script>
         <script>
                 (function () {
                     "use strict";

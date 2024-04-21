@@ -8,6 +8,21 @@ CREATE TABLE Employees(
 	employee_code CHAR(10) NOT NULL,
 	employee_name NVARCHAR(255) NOT NULL,
 );
+CREATE TABLE Employee_E (
+    id INT PRIMARY KEY IDENTITY(1,1),
+    department_name NVARCHAR(255),
+    position_name NVARCHAR(255),
+    Employee_id INT,
+    FOREIGN KEY (Employee_id) REFERENCES Employees(Employee_id)
+);
+CREATE TABLE Role(
+	user_id INT NOT NULL,
+	employee_id INT NOT NULL,
+	role_name NVARCHAR(225),
+	PRIMARY KEY (user_id,employee_id),
+	FOREIGN KEY (employee_id) REFERENCES Employees(employee_id),
+	FOREIGN KEY (user_id) REFERENCES Users(user_id)
+);
 CREATE TABLE Projects (
     project_id INT PRIMARY KEY IDENTITY(1,1),
 	project_code CHAR(10) NOT NULL,
@@ -40,6 +55,17 @@ CREATE TABLE Risks(
 	FOREIGN KEY (project_id) REFERENCES Projects(project_id)
 );
 
+CREATE TABLE Approve (
+    id INT PRIMARY KEY IDENTITY(1,1),
+	status NVARCHAR(50) DEFAULT 'Pending',
+    description TEXT,
+	end_date DATETIME,
+    employee_id INT NOT NULL,
+    attachment_file VARBINARY(MAX),
+	FOREIGN KEY (employee_id) REFERENCES Employees(employee_id),
+);
+
+
 INSERT INTO Users (username, password)
 VALUES ('admin@gmail.com', '12345678'),
        ('vuthuong@gmail.com', '12345678');
@@ -49,6 +75,17 @@ VALUES ('EMP01', 'John'),
        ('EMP02', 'Jane'),
        ('EMP03', 'Mary'),
 	   ('EMP04', 'Michael');
+
+INSERT INTO Employee_E (department_name, position_name, Employee_id)
+VALUES ('Marketing', 'Manager', 1),
+('HR', 'HR Manager', 2),
+('Finance', 'Accountant', 3),
+('IT', 'Software Engineer', 4);
+
+INSERT INTO Role (user_id, employee_id, role_name)
+VALUES
+    (1, 1, 'Admin'),
+    (2, 2, 'Employee');
 
 INSERT INTO Projects (project_code, project_name, start_date, end_date, status, employee_id)
 VALUES ('P01', 'Project 01', '2024-01-24', '2024-05-24', N'In Progress', 1),
@@ -70,4 +107,9 @@ VALUES ('R01', 'Risk 01', 'Risk of Project 1', 'Solution of Project 1', 1),
        ('R02', 'Risk 02', 'Risk of Project 2', 'Solution of Project 2', 2),
        ('R03', 'Risk 03', 'Risk of Project 3', 'Solution of Project 3', 3),
 	   ('R04', 'Risk 04', 'Risk of Project 4', 'Solution of Project 4', 4);
+
+INSERT INTO Approve (status, description, end_date, employee_id, attachment_file)
+VALUES ('Pending','Approved request for leave', '2024-04-20', 1, 0x1A2B3C4D),
+('Pending', 'Pending request for fee', '2024-06-01',2, 0x1A2B3C4D),
+( 'Pending','Pending request for travel', '2024-05-15', 3, 0x1A2B3C4D);
 

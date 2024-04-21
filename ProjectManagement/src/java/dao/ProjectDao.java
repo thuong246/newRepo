@@ -272,6 +272,13 @@ public class ProjectDao extends BaseDao {
         }
     }
 
-    
-
+   public void delete(String id) {
+        String sql = "DELETE FROM Projects WHERE project_id = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, id);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -80,16 +80,6 @@
                             <div class="col-lg-5">
                                 <div class="row">
                                     <div class="col-lg-6 col-md-7">
-                                        <div class="search-bar p-0 d-none d-lg-block ms-2">
-                                            <div id="search" class="menu-search mb-0">
-                                                <form role="search" method="get" id="searchform" class="searchform">
-                                                    <div>
-                                                        <input type="text" class="form-control border rounded-pill" name="s" id="s" placeholder="Search Keywords...">
-                                                        <input type="submit" id="searchsubmit" value="Search">
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
                                     </div>
                                     <div class="col-lg-6 col-md-5" style="">
                                         <div class="justify-content-md-end mt-4 mt-sm-0">
@@ -105,7 +95,7 @@
                         <div class="row">
                             <div class="col-12 mt-4">
                                 <div class="table-responsive bg-white shadow rounded">
-                                    <table class="table mb-0 table-center">
+                                    <table class="table mb-0 table-center" id="myTable">
                                         <thead>
                                             <tr>
                                                 <th class="border-bottom p-3" style="min-width: 20px;">#</th>
@@ -136,8 +126,8 @@
                                             </c:forEach> 
                                         </tbody>
                                     </table>
-                                    <form id="delete" action="" method="post">
-                                        <input id="daleteUserId" type="hidden" name="daleteUserId">
+                                    <form id="delete" action="updaterisk?action=delete" method="post">
+                                        <input id="risk_id" type="hidden" name="risk_id">
                                     </form>
                                 </div>
                             </div>
@@ -148,7 +138,6 @@
                             <!-- PAGINATION START -->
                             <div class="col-12 mt-4">
                                 <div class="d-md-flex align-items-center text-center justify-content-between">
-                                    <span class="text-muted me-3">Showing 1 - 10 out of 50</span>
                                     <ul class="pagination justify-content-center mb-0 mt-3 mt-sm-0">
                                         <li class="page-item"><a class="page-link" href="javascript:void(0)" aria-label="Previous">Prev</a></li>
                                         <li class="page-item active"><a class="page-link" href="javascript:void(0)">1</a></li>
@@ -213,8 +202,8 @@
             //delete user
             function deleteUser(x) {
                 //confirm
-                if (confirm('Do you want to remove the user with Id:' + x) === true) {
-                    document.getElementById('daleteUserId').value = x;
+                if (confirm('Do you want to remove the with Id:' + x) === true) {
+                    document.getElementById('risk_id').value = x;
                     document.getElementById('delete').submit();
                 }
 

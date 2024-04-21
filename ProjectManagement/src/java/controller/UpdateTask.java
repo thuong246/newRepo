@@ -86,24 +86,35 @@ public class UpdateTask extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        TaskDao tdao = new TaskDao();
-        String task_id = request.getParameter("task_id");
-        String task_code = request.getParameter("tcode");
-        String project_code = request.getParameter("pcode");
-        String task_name = request.getParameter("tname");
-        String start_date = request.getParameter("startdate");
-        String end_date = request.getParameter("enddate");
-        String employee_code = request.getParameter("empcode");
-        String status = request.getParameter("status");
-        Employee e = new Employee();
-        e.setEmployee_code(employee_code);
-        Project p = new Project();
-        p.setProject_code(project_code);
-        Task t = new Task(task_id, task_code, p, task_name, start_date, end_date, e, status);
-        tdao.UpdateTask(t);
-        ArrayList<Task> list = tdao.getListTask();
-        request.setAttribute("listtask", list);
-        request.getRequestDispatcher("view/task.jsp").forward(request, response);
+        String action = request.getParameter("action");
+        if (action.equals("update")) {
+            TaskDao tdao = new TaskDao();
+            String task_id = request.getParameter("task_id");
+            String task_code = request.getParameter("tcode");
+            String project_code = request.getParameter("pcode");
+            String task_name = request.getParameter("tname");
+            String start_date = request.getParameter("startdate");
+            String end_date = request.getParameter("enddate");
+            String employee_code = request.getParameter("empcode");
+            String status = request.getParameter("status");
+            Employee e = new Employee();
+            e.setEmployee_code(employee_code);
+            Project p = new Project();
+            p.setProject_code(project_code);
+            Task t = new Task(task_id, task_code, p, task_name, start_date, end_date, e, status);
+            tdao.UpdateTask(t);
+            ArrayList<Task> list = tdao.getListTask();
+            request.setAttribute("listtask", list);
+            request.getRequestDispatcher("view/task.jsp").forward(request, response);
+        }
+        if (action.equals("delete")) {
+            TaskDao tdao = new TaskDao();
+            String task_id = request.getParameter("task_id");
+            tdao.delete(task_id);
+            ArrayList<Task> list = tdao.getListTask();
+            request.setAttribute("listtask", list);
+            request.getRequestDispatcher("view/task.jsp").forward(request, response);
+        }
     }
 
     /**

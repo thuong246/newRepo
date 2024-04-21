@@ -63,80 +63,57 @@
                 <div class="container-fluid">
                     <div class="layout-specing">
                         <div class="d-md-flex justify-content-between">
-                            <h3 class="mb-0">Add Project</h3>
-                            <nav aria-label="breadcrumb" class="d-inline-block mt-4 mt-sm-0">
-                                <ul class="breadcrumb bg-transparent rounded mb-0 p-0">
-                                    <li class="breadcrumb-item"><a href="/ProjectManagement/project">Project List</a></li>
-                                    <li class="breadcrumb-item"><a href="#">Add Project</a></li>
-                                </ul>
-                            </nav>
+                            <h3 class="mb-0">Add Task</h3>
+
                         </div>
                         <div class="modal-body p-3 pt-4">
                             <div class="modal-body p-3 pt-4">
-                                <form action="addproject" method="post">
+                                <form action="create" method="post" enctype="multipart/form-data">
                                     <div class="row">
-                                        <input name="project_id" type="hidden">
-                                        <div class="col-md-6">
+                                        <input name="aprove_id" type="hidden">
+                                        <div class="col-lg-6">
                                             <div class="mb-3">
-                                                <label class="form-label">Project code<span class="text-danger">*</span></label>
-                                                <input name="pcode"  type="text" class="form-control" required>
-                                            </div>
-                                        </div><!--end col-->
-
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <label class="form-label">Project name</label>
-                                                <input name="pname"  type="text" class="form-control" >
-                                            </div>
-                                        </div><!--end col-->
-
-                                        <div class="col-lg-6 ">
-                                            <div class="mb-3">
-                                                <label class="form-label">Start Date : <span class="text-danger">*</span></label>
-                                                <input name="startdate" type="date" class="flatpickr flatpickr-input form-control" id="checkin-date">
-                                            </div>
-                                        </div><!--end col-->
-
-                                        <div class="col-lg-6 ">
-                                            <div class="mb-3">
-                                                <label class="form-label">End Date : <span class="text-danger">*</span></label>
-                                                <input name="enddate" type="date" class="flatpickr flatpickr-input form-control" id="checkout-date">
+                                                <label class="form-label">Description<span class="text-danger">*</span></label>
+                                                <input name="description" type="text" class="form-control" placeholder="Description :" required="">
                                             </div> 
                                         </div><!--end col-->
 
-                                        <div class="col-md-6">
+                                        <div class="col-lg-6 ">
                                             <div class="mb-3">
-                                                <label class="form-label">Employee code : <span class="text-danger">*</span></label>
+                                                <label class="form-label">End Date <span class="text-danger">*</span></label>
+                                                <input name="enddate" type="date" class="flatpickr flatpickr-input form-control" id="checkout-date">
+                                            </div> 
+                                        </div><!--end col-->
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="mb-6">
+                                                <label class="form-label">Employee Code <span class="text-danger">*</span></label>
                                                 <select class="form-select form-control" name="empcode">
                                                     <c:forEach items="${Empcode}" var="i"> 
                                                         <option >${i}</option>
                                                     </c:forEach>
                                                 </select>
                                             </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <label class="form-label">Status</label>
-                                                <select class="form-select form-control" name="status">
-                                                    <c:forEach items="${status}" var="i"> 
-                                                        <option >${i}</option>
-                                                    </c:forEach>
-                                                </select>
-                                            </div>
                                         </div><!--end col-->
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Attachments File<span class="text-danger">*</span></label>
+                                                <input name="file" type="file" class="form-control" required="">
+                                            </div> 
+                                        </div><!--end col-->
+
                                         <div class="col-lg-3">
                                             <div class="d-grid" style="margin-top: 10px">
                                                 <button type="submit" class="btn btn-primary">Add</button>
                                             </div>
-
                                         </div><!--end col-->
                                         <div class="col-lg-3">
                                             <div class="d-grid" style="margin-top: 10px">
-                                                <a href="/ProjectManagement/project" class="btn btn-primary" >Back</a>
+                                                <a href="/ProjectManagement/homepage" class="btn btn-primary" >Back</a>
                                             </div>
                                         </div>
+
                                     </div><!--end row-->
-                                </form><!--end form-->
+                                </form>
                             </div>
                         </div>
                     </div>

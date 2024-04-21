@@ -73,7 +73,7 @@
                         </div>
                         <div class="modal-body p-3 pt-4">
                             <div class="modal-body p-3 pt-4">
-                                <form action="updaterisk" method="post">
+                                <form action="updaterisk?action=update" method="post">
                                     <div class="row">
                                         <input name="risk_id" type="hidden" value="${listbyid.risk_id}">
                                         <div class="col-md-6">
@@ -111,14 +111,20 @@
                                                 </select>
                                             </div>
                                         </div><!--end col-->
-
-                                    </div><!--end row-->
-
-                                    <div class="row" style="margin-top: 10px">
-                                        <div class="col-sm-3">
-                                            <input type="submit" id="submit" name="send" class="btn btn-primary" value="Save changes">
+                                        <div class="col-lg-3">
+                                            <div class="d-grid" style="margin-top: 10px">
+                                                <button type="submit" class="btn btn-primary">Add</button>
+                                            </div>
                                         </div><!--end col-->
+                                        <div class="col-lg-3">
+                                            <div class="d-grid" style="margin-top: 10px">
+                                                <a href="/ProjectManagement/risk" class="btn btn-primary">Back</a>
+                                            </div>
+                                        </div><!--end col-->
+
                                     </div><!--end row-->
+
+
                                 </form><!--end form-->
                             </div>
                         </div>

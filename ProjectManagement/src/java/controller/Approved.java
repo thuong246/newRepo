@@ -4,23 +4,21 @@
  */
 package controller;
 
-import dao.ProjectDao;
-import dao.UserDao;
+import dao.ApproveDao;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import model.Employee;
-import model.Project;
+import model.Approve;
 
 /**
  *
- * @author ADMIN
+ * @author Admin
  */
-public class UpdateEmployee extends HttpServlet {
+public class Approved extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +37,10 @@ public class UpdateEmployee extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet UpdateEmployee</title>");
+            out.println("<title>Servlet Approved</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet UpdateEmployee at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Approved at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,15 +58,10 @@ public class UpdateEmployee extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html");
-        response.setCharacterEncoding("UTF-8");
-        if (request.getParameter("mod") != null && request.getParameter("mod").equals("1")) {
-            ProjectDao p = new ProjectDao();
-            String empid = request.getParameter("employee_id");
-            Employee listbyid = p.getEmployeebyId(empid);
-            request.setAttribute("listbyid", listbyid);
-            request.getRequestDispatcher("view/updateemployee.jsp").forward(request, response);
-        }
+        ApproveDao adao = new ApproveDao();
+        ArrayList<Approve> list = adao.getListApprove();
+        request.setAttribute("listA", list);
+        request.getRequestDispatcher("view/approve.jsp").forward(request, response);
     }
 
     /**
@@ -82,27 +75,7 @@ public class UpdateEmployee extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        String action = request.getParameter("action");
-        if (action.equals("update")) {
-            ProjectDao pdao = new ProjectDao();
-            String e_id = request.getParameter("e_id");
-            String ename = request.getParameter("ename");
-            String ecode = request.getParameter("ecode");
-            Employee p = new Employee(e_id, ecode, ename);
-            pdao.updateEmployee(p);
-            UserDao pu = new UserDao();
-            ArrayList<Employee> list = pu.getListEmployee();
-            request.setAttribute("listE", list);
-            request.getRequestDispatcher("view/employee.jsp").forward(request, response);
-        }if (action.equals("delete")) {
-            ProjectDao pdao = new ProjectDao();
-            String e_id = request.getParameter("e_id");
-//            pdao.delete(e_id);
-            UserDao pu = new UserDao();
-            ArrayList<Employee> list = pu.getListEmployee();
-            request.setAttribute("listE", list);
-        }
+        processRequest(request, response);
     }
 
     /**

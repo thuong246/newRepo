@@ -5,10 +5,11 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Project Management</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -73,7 +74,7 @@
                         </div>
                         <div class="modal-body p-3 pt-4">
                             <div class="modal-body p-3 pt-4">
-                                <form action="updateemployee" method="post">
+                                <form action="updateemployee" method="post" accept-charset="UTF-8">
                                     <div class="row">
                                         <input name="e_id" type="hidden" value="${listbyid.employee_id}">
                                         <div class="col-md-6">
@@ -89,12 +90,19 @@
                                                 <input name="ename"  type="text" class="form-control" value="${listbyid.employee_name}">
                                             </div>
                                         </div><!--end col-->
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <input type="submit" id="submit" name="send" class="btn btn-primary" value="Save Change">
+                                        <div class="col-lg-3">
+                                            <div class="d-grid" style="margin-top: 10px">
+                                                <button type="submit" class="btn btn-primary">Add</button>
+                                            </div>
+
                                         </div><!--end col-->
-                                    </div><!--end row-->
+                                        <div class="col-lg-3">
+                                            <div class="d-grid" style="margin-top: 10px">
+                                                <a href="/ProjectManagement/employee" class="btn btn-primary" >Back</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </form><!--end form-->
                             </div>
                         </div>

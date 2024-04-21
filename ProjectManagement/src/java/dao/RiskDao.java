@@ -134,5 +134,15 @@ public class RiskDao extends BaseDao {
             e.printStackTrace();
         }
     }
+    public void delete(String id) {
+        String sql = "DELETE FROM Risks WHERE risk_id = ?";
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, id);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

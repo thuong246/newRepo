@@ -88,21 +88,24 @@
                 <div class="container-fluid">
                     <div class="layout-specing">
                         <div class="row">
-                            <div class="col-lg-10 col-md-6">
-                                <h5 class="mb-0">Employee</h5>
+                            <div class="col-lg-7 col-md-6">
+                                <h5 class="mb-0">Report</h5>
                                 <nav aria-label="breadcrumb" class="d-inline-block mt-2">
                                     <ul class="breadcrumb breadcrumb-muted bg-transparent rounded mb-0 p-0">
-                                        <li class="breadcrumb-item active" aria-current="page">Employee List</li>
+                                        <li class="breadcrumb-item active" aria-current="page">Report List</li>
                                     </ul>
                                 </nav>
                             </div>
 
-                            <div class="col-lg-2 col-md-6 mt-4 mt-md-0">
+                            <div class="col-lg-5 col-md-6 mt-4 mt-md-0">
                                 <div class="row">
-                                    <div class="col-lg-12 col-md-5">
+                                    <div class="col-lg-8 col-md-7">
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-5">
                                         <div class="justify-content-md-end mt-4 mt-sm-0">
                                             <div class="d-grid">
-                                                <a href="/ProjectManagement/addemployee" class="btn btn-primary">Add New</a>
+                                                <a href="#" class="btn btn-primary">Add New</a>
                                             </div>
                                         </div>
                                     </div>
@@ -113,54 +116,94 @@
                         <div class="row">
                             <div class="col-12 mt-4">
                                 <div class="table-responsive bg-white shadow rounded">
-                                    <table class="table mb-0 table-center" id="myTable">
+                                    <table class="table table-center bg-white mb-0" id="myTable">
                                         <thead>
                                             <tr>
                                                 <th class="border-bottom p-3" style="min-width: 50px;">#</th>
-                                                <th class="border-bottom p-3" style="min-width: 180px;">Employee Code</th>
-                                                <th class="border-bottom p-3" style="min-width: 120px;">Employee Name</th>
-                                                <th class="border-bottom p-3" style="min-width: 150px;">Department Name</th>
-                                                <th class="border-bottom p-3" style="min-width: 200px;">Position Name</th>
-                                                <th class="border-bottom p-3" style="min-width: 50px;"></th>
+                                                <th class="border-bottom p-3" style="min-width: 180px;">Project Name</th>
+                                                <th class="border-bottom p-3">Job number</th>
+                                                <th class="border-bottom p-3">Job Complete</th>
+                                                <th class="border-bottom p-3">Time</th>
+                                                <th class="border-bottom p-3" style="min-width: 150px;">Employee Code</th>
+                                                <th class="border-bottom p-3">Status</th>
+                                                <th class="border-bottom p-3" style="min-width: 100px;"></th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <c:forEach items="${listE}" var="i">
-                                                <tr class="itemSetting">
-                                                    <td class="p-3">${i.getEmployee_id()}</td>
-                                                    <td class="py-3">
-                                                        <span class="ms-2">${i.getEmployee_code()}</span>
-                                                    </td>
-                                                    <td class="p-3">${i.getEmployee_name()}</td>
-                                                    <td class="p-3">${i.getDepartment()}</td>
-                                                    <td class="p-3">${i.getPosition()}</td>
-                                                    <td class="border-bottom p-3" style="min-width: 70px;">
-                                                        <a href="/ProjectManagement/updateemployee?mod=1&employee_id=${i.getEmployee_id()}" class="btn btn-icon btn-pills btn-soft-success"><i class="uil uil-pen"></i></a>
-                                                        <a href="#" class="btn btn-icon btn-pills btn-soft-danger" data-bs-toggle="modal" data-bs-target="#cancelappointment"><i class="uil uil-trash"></i></a>
-                                                    </td>
-                                                </tr>
-                                            </c:forEach> 
+                                            <tr>
+                                                <th class="p-3">1</th>
+                                                <td class="p-3">Thiết kế giao diện quản lý phòng khám</td>
+                                                <td class="p-3">10</td>
+                                                <td class="p-3">10</td>
+                                                <td class="p-3">3 tháng</td>
+                                                <td class="p-3">EMP01</td>
+                                                <td class="p-3">Complete</td>
+                                                <td class="text-end p-3">
+                                                    <a href="#" class="btn btn-icon btn-pills btn-soft-success" data-bs-toggle="modal" data-bs-target="#editprofile"><i class="uil uil-pen"></i></a>
+                                                    <a href="#" class="btn btn-icon btn-pills btn-soft-danger"><i class="uil uil-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <th class="p-3">2</th>
+                                                <td class="p-3">Thiết kế phần mềm tính lương</td>
+                                                <td class="p-3">5</td>
+                                                <td class="p-3">4</td>
+                                                <td class="p-3">4 tháng</td>
+                                                <td class="p-3">EMP02</td>
+                                                <td class="p-3">To_do</td>
+                                                <td class="text-end p-3">
+                                                    <a href="#" class="btn btn-icon btn-pills btn-soft-success" data-bs-toggle="modal" data-bs-target="#editprofile"><i class="uil uil-pen"></i></a>
+                                                    <a href="#" class="btn btn-icon btn-pills btn-soft-danger"><i class="uil uil-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="p-3">3</th>
+                                                <td class="p-3">Phần mềm quản lý cho công ty A</td>
+                                                <td class="p-3">7</td>
+                                                <td class="p-3">7</td>
+                                                <td class="p-3">11 tháng</td>
+                                                <td class="p-3">EMP03</td>
+                                                <td class="p-3">Complete</td>
+                                                <td class="text-end p-3">
+                                                    <a href="#" class="btn btn-icon btn-pills btn-soft-success" data-bs-toggle="modal" data-bs-target="#editprofile"><i class="uil uil-pen"></i></a>
+                                                    <a href="#" class="btn btn-icon btn-pills btn-soft-danger"><i class="uil uil-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="p-3">4</th>
+                                                <td class="p-3">Phần mềm quản lý đặt vé xem phim</td>
+                                                <td class="p-3">8</td>
+                                                <td class="p-3">1</td>
+                                                <td class="p-3">12 tháng</td>
+                                                <td class="p-3">EMP04</td>
+                                                <td class="p-3">To_do</td>
+                                                <td class="text-end p-3">
+                                                    <a href="#" class="btn btn-icon btn-pills btn-soft-success" data-bs-toggle="modal" data-bs-target="#editprofile"><i class="uil uil-pen"></i></a>
+                                                    <a href="#" class="btn btn-icon btn-pills btn-soft-danger"><i class="uil uil-trash"></i></a>
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
-                            <div class="row text-center">
-                                <!-- PAGINATION START -->
-                                <div class="col-9 mt-4">
-                                    <div class="d-md-flex align-items-center text-center justify-content-between">
-                                        <ul class="pagination justify-content-center mb-0 mt-3 mt-sm-0">
-                                            <li class="page-item"><a class="page-link" href="javascript:void(0)" aria-label="Previous">Prev</a></li>
-                                            <li class="page-item active"><a class="page-link" href="javascript:void(0)">1</a></li>
-                                            <li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
-                                            <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
-                                            <li class="page-item"><a class="page-link" href="javascript:void(0)" aria-label="Next">Next</a></li>
-                                        </ul>
-                                    </div>
-                                </div><!--end col-->
-                                <!-- PAGINATION END -->
-                            </div><!--end row-->
                         </div><!--end row-->
 
+                        <div class="row text-center">
+                            <!-- PAGINATION START -->
+                            <div class="col-12 mt-4">
+                                <div class="d-md-flex align-items-center text-center justify-content-between">
+                                    <ul class="pagination justify-content-center mb-0 mt-3 mt-sm-0">
+                                        <li class="page-item"><a class="page-link" href="javascript:void(0)" aria-label="Previous">Prev</a></li>
+                                        <li class="page-item active"><a class="page-link" href="javascript:void(0)">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="javascript:void(0)" aria-label="Next">Next</a></li>
+                                    </ul>
+                                </div>
+                            </div><!--end col-->
+                            <!-- PAGINATION END -->
+                        </div><!--end row-->
                     </div>
                 </div><!--end container-->
             </main>
@@ -220,9 +263,7 @@
                                         <div class="mb-6">
                                             <label class="form-label">Status <span class="text-danger">*</span></label>
                                             <select name="status" class="form-select form-control" id="inputGroupSelect01">
-                                                <c:forEach items="${listproject}" var="i"> 
-                                                    <option>${i.getStatus()}</option>
-                                                </c:forEach>
+                                                
                                             </select>
                                         </div>
                                     </div><!--end col-->
@@ -297,176 +338,7 @@
         <script src="assets/js/feather.min.js"></script>
         <!-- Main Js -->
         <script src="assets/js/app.js"></script>
-        <script>
-                (function () {
-                    "use strict";
-                    $.Toast = function (title, message, type, options) {
-                        var defaultOptions = {
-                            appendTo: "body",
-                            stack: false,
-                            position_class: "toast-bottom-right",
-                            fullscreen: false,
-                            width: 250,
-                            spacing: 20,
-                            timeout: 4000,
-                            has_close_btn: true,
-                            has_icon: true,
-                            sticky: false,
-                            border_radius: 6,
-                            has_progress: false,
-                            rtl: false
-                        }
-
-                        var $element = null;
-
-                        var $options = $.extend(true, {}, defaultOptions, options);
-
-                        var spacing = $options.spacing;
-
-                        var css = {
-                            "position": ($options.appendTo == "body") ? "fixed" : "absolute",
-                            "min-width": $options.width,
-                            "display": "none",
-                            "border-radius": $options.border_radius,
-                            "z-index": 99999
-                        }
-
-                        $element = $('<div class="toast-item-wrapper ' + type + ' ' + $options.position_class + '"></div>');
-                        $('<p class="toast-title">' + title + '</p>').appendTo($element);
-                        $('<p class="toast-message">' + message + '</p>').appendTo($element);
-
-                        if ($options.fullscreen) {
-                            $element.addClass("fullscreen");
-                        }
-
-                        if ($options.rtl) {
-                            $element.addClass("rtl");
-                        }
-
-                        if ($options.has_close_btn) {
-                            $('<span class="toast-close">&times;</span>').appendTo($element);
-                            if ($options.rtl) {
-                                css["padding-left"] = 20;
-                            } else {
-                                css["padding-right"] = 20;
-                            }
-                        }
-
-                        if ($options.has_icon) {
-                            $('<i class="toast-icon toast-icon-' + type + '"></i>').appendTo($element);
-                            if ($options.rtl) {
-                                css["padding-right"] = 50;
-                            } else {
-                                css["padding-left"] = 50;
-                            }
-                        }
-
-                        if ($options.has_progress && $options.timeout > 0) {
-                            $('<div class="toast-progress"></div>').appendTo($element);
-                        }
-
-                        if ($options.sticky) {
-                            $options.spacing = 0;
-                            spacing = 0;
-
-                            switch ($options.position_class) {
-                                case "toast-top-left" :
-                                {
-                                    css["top"] = 0;
-                                    css["left"] = 0;
-                                    break;
-                                }
-                                case "toast-top-right" :
-                                {
-                                    css["top"] = 0;
-                                    css["left"] = 0;
-                                    break;
-                                }
-                                case "toast-top-center" :
-                                {
-                                    css["top"] = 0;
-                                    css["left"] = css["right"] = 0;
-                                    css["width"] = "100%";
-                                    break;
-                                }
-                                case "toast-bottom-left" :
-                                {
-                                    css["bottom"] = 0;
-                                    css["left"] = 0;
-                                    break;
-                                }
-                                case "toast-bottom-right" :
-                                {
-                                    css["bottom"] = 0;
-                                    css["right"] = 0;
-                                    break;
-                                }
-                                case "toast-bottom-center" :
-                                {
-                                    css["bottom"] = 0;
-                                    css["left"] = css["right"] = 0;
-                                    css["width"] = "100%";
-                                    break;
-                                }
-                                default :
-                                {
-                                    break;
-                                }
-                            }
-                        }
-
-                        if ($options.stack) {
-                            if ($options.position_class.indexOf("toast-top") !== -1) {
-                                $($options.appendTo).find('.toast-item-wrapper').each(function () {
-                                    css["top"] = parseInt($(this).css("top")) + this.offsetHeight + spacing;
-                                });
-                            } else if ($options.position_class.indexOf("toast-bottom") !== -1) {
-                                $($options.appendTo).find('.toast-item-wrapper').each(function () {
-                                    css["bottom"] = parseInt($(this).css("bottom")) + this.offsetHeight + spacing;
-                                });
-                            }
-                        }
-
-                        $element.css(css);
-
-                        $element.appendTo($options.appendTo);
-
-                        if ($element.fadeIn) {
-                            $element.fadeIn();
-                        } else {
-                            $alert.css({display: 'block', opacity: 1});
-                        }
-
-                        function removeToast() {
-                            $.Toast.remove($element);
-                        }
-
-                        if ($options.timeout > 0) {
-                            setTimeout(removeToast, $options.timeout);
-                            if ($options.has_progress) {
-                                $(".toast-progress", $element).animate({"width": "100%"}, $options.timeout);
-                            }
-                        }
-
-                        $(".toast-close", $element).click(removeToast)
-
-                        return $element;
-                    }
-
-                    $.Toast.remove = function ($element) {
-                        "use strict";
-                        if ($element.fadeOut)
-                        {
-                            $element.fadeOut(function () {
-                                return $element.remove();
-                            });
-                        } else {
-                            $element.remove();
-                        }
-                    }
-                })();
-
-        </script>
+        
 
     </body>
 </html>

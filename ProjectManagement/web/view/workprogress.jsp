@@ -18,16 +18,16 @@
         <meta name="website" content="../../../index.html" />
         <meta name="Version" content="v1.2.0" />
         <!-- favicon -->
-        <link rel="shortcut icon" href="../assets/images/favicon.ico.png">
+        <link rel="shortcut icon" href="assets/images/favicon.ico.png">
         <!-- Bootstrap -->
-        <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- simplebar -->
-        <link href="../assets/css/simplebar.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/simplebar.css" rel="stylesheet" type="text/css" />
         <!-- Icons -->
-        <link href="../assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
         <link href="https://unicons.iconscout.com/release/v3.0.6/css/line.css"  rel="stylesheet">
         <!-- Css -->
-        <link href="../assets/css/style.min.css" rel="stylesheet" type="text/css" id="theme-opt" />
+        <link href="assets/css/style.min.css" rel="stylesheet" type="text/css" id="theme-opt" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css">
         <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/js/adminlte.min.js"></script>
 
@@ -172,16 +172,16 @@
     </div>
     <!-- page-wrapper -->
     <!-- javascript -->
-    <script src="../assets/js/jquery.min.js"></script>
-    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
 
     <!-- simplebar -->
-    <script src="../assets/js/simplebar.min.js"></script>
+    <script src="assets/js/simplebar.min.js"></script>
     <!-- Icons -->
-    <script src="../assets/js/feather.min.js"></script>
+    <script src="assets/js/feather.min.js"></script>
     <!-- Main Js -->
-    <script src="../assets/js/app.js"></script>
-    <script src="../assets/js/script.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
 

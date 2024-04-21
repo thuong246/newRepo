@@ -21,50 +21,76 @@
                         <h2>TEKLABS</h2>
                     </a>
                 </div>
-                <ul class="sidebar-menu pt-3">
-                    <li class="sidebar-dropdown">
-                        <a href="/ProjectManagement/menu" >
-                             <i class="fa-solid fa-house"><div class="bg-primary"></div></i>Menu 
-                        </a>                
-                    </li>
-                    <li class="sidebar-dropdown">
-                        <a href="/ProjectManagement/project">
-                           <i class="fa-solid fa-diagram-project"><div class="bg-primary"></div></i>Project
-                        </a>     
+                <c:if test="${sessionScope.acc == 'Admin'}">
+                    <ul class="sidebar-menu pt-3">
+                        <li class="sidebar-dropdown">
+                            <a href="/ProjectManagement/menu" >
+                                <i class="fa-solid fa-house"><div class="bg-primary"></div></i>Menu 
+                            </a>                
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="/ProjectManagement/project">
+                                <i class="fa-solid fa-diagram-project"><div class="bg-primary"></div></i>Project
+                            </a>     
 
-                    </li>
-                    <li class="sidebar-dropdown">
-                        <a href="/ProjectManagement/task">
-                            <i class="fa-solid fa-thumbtack"><div class="bg-primary"></div></i>Task
-                        </a>     
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="/ProjectManagement/task">
+                                <i class="fa-solid fa-thumbtack"><div class="bg-primary"></div></i>Task
+                            </a>     
 
-                    </li>
-                    <li class="sidebar-dropdown">  
-                        <a href="/ProjectManagement/workprogress">
-                            <i class="fa-solid fa-list-check"><div class="bg-primary"></div></i>Work progress
-                        </a>
-                    </li>
-                    <li class="sidebar-dropdown">  
-                        <a href="/ProjectManagement/risk">
-                            <i class="fa-solid fa-asterisk"><div class="bg-primary"></div></i>Risk
-                        </a>
-                    </li>
-                    <li class="sidebar-dropdown">  
-                        <a href="/ProjectManagement/employee">
-                            <i class="fa-solid fa-user"><div class="bg-primary"></div></i>Employee
-                        </a>
-                    </li>
-                    <li class="sidebar-dropdown">  
-                        <a href="/ProjectManagement/approved">
-                            <i class="fa-solid fa-calendar-check"><div class="bg-primary"></div></i>Approved Jobs
-                        </a>
-                    </li>
-                    <li class="sidebar-dropdown">  
-                        <a href="/ProjectManagement/report">
-                            <i class="fa-solid fa-bug"><div class="bg-primary"></div></i>Report
-                        </a>
-                    </li>
-                </ul>
+                        </li>
+                        <li class="sidebar-dropdown">  
+                            <a href="/ProjectManagement/workprogress">
+                                <i class="fa-solid fa-list-check"><div class="bg-primary"></div></i>Work progress
+                            </a>
+                        </li>
+                        <li class="sidebar-dropdown">  
+                            <a href="/ProjectManagement/risk">
+                                <i class="fa-solid fa-asterisk"><div class="bg-primary"></div></i>Risk
+                            </a>
+                        </li>
+                        <li class="sidebar-dropdown">  
+                            <a href="/ProjectManagement/employee">
+                                <i class="fa-solid fa-user"><div class="bg-primary"></div></i>Employee
+                            </a>
+                        </li>
+                        <li class="sidebar-dropdown">  
+                            <a href="/ProjectManagement/approved">
+                                <i class="fa-solid fa-calendar-check"><div class="bg-primary"></div></i>Approved Jobs
+                            </a>
+                        </li>
+                        <li class="sidebar-dropdown">  
+                            <a href="/ProjectManagement/report">
+                                <i class="fa-solid fa-bug"><div class="bg-primary"></div></i>Report
+                            </a>
+                        </li>
+                    </ul>
+                </c:if>
+                <c:if test="${sessionScope.acc == 'Employee'}">
+                    <ul class="sidebar-menu pt-3">
+                        <li class="sidebar-dropdown">
+                            <a href="/ProjectManagement/task">
+                                <i class="fa-solid fa-thumbtack"><div class="bg-primary"></div></i>Task
+                            </a>     
+                        </li>
+                        <li class="sidebar-dropdown">  
+                            <a href="/ProjectManagement/employee">
+                                <i class="fa-solid fa-user"><div class="bg-primary"></div></i>Employee
+                            </a>
+                        </li>
+                        <li class="sidebar-dropdown">  
+                            <a href="/ProjectManagement/workprogress">
+                                <i class="fa-solid fa-list-check"><div class="bg-primary"></div></i>Work progress
+                            </a>
+                        </li>
+                        <li class="sidebar-dropdown">  
+                            <a href="/ProjectManagement/create">
+                                <i class="fa-solid fa-calendar-check"><div class="bg-primary"></div></i>Create New Approval
+                            </a>
+                        </li>
+                    </ul>
+                </c:if>
             </div>
         </nav>
     </body>

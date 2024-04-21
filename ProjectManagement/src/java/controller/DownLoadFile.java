@@ -4,23 +4,23 @@
  */
 package controller;
 
-import dao.ProjectDao;
-import dao.UserDao;
+import dao.ApproveDao;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import model.Employee;
-import model.Project;
+import model.Approve;
 
 /**
  *
- * @author ADMIN
+ * @author Admin
  */
-public class UpdateEmployee extends HttpServlet {
+public class DownLoadFile extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +39,10 @@ public class UpdateEmployee extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet UpdateEmployee</title>");
+            out.println("<title>Servlet DownLoadFile</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet UpdateEmployee at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet DownLoadFile at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,14 +60,19 @@ public class UpdateEmployee extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html");
-        response.setCharacterEncoding("UTF-8");
-        if (request.getParameter("mod") != null && request.getParameter("mod").equals("1")) {
-            ProjectDao p = new ProjectDao();
-            String empid = request.getParameter("employee_id");
-            Employee listbyid = p.getEmployeebyId(empid);
-            request.setAttribute("listbyid", listbyid);
-            request.getRequestDispatcher("view/updateemployee.jsp").forward(request, response);
+        try {
+            int approveId = Integer.parseInt(request.getParameter("id"));
+            ApproveDao aDAO = new ApproveDao();
+            Approve approve = aDAO.getApproveById(approveId); 
+            if (approve != null && approve.getFile() != null) {
+                response.setContentType("application/octet-stream");
+                response.setHeader("Content-Disposition", "attachment; filename=\"file_" + approveId + ".dat\"");
+                response.getOutputStream().write(approve.getFile());
+            } else {
+                response.getWriter().println("File not found.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
@@ -82,27 +87,7 @@ public class UpdateEmployee extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        String action = request.getParameter("action");
-        if (action.equals("update")) {
-            ProjectDao pdao = new ProjectDao();
-            String e_id = request.getParameter("e_id");
-            String ename = request.getParameter("ename");
-            String ecode = request.getParameter("ecode");
-            Employee p = new Employee(e_id, ecode, ename);
-            pdao.updateEmployee(p);
-            UserDao pu = new UserDao();
-            ArrayList<Employee> list = pu.getListEmployee();
-            request.setAttribute("listE", list);
-            request.getRequestDispatcher("view/employee.jsp").forward(request, response);
-        }if (action.equals("delete")) {
-            ProjectDao pdao = new ProjectDao();
-            String e_id = request.getParameter("e_id");
-//            pdao.delete(e_id);
-            UserDao pu = new UserDao();
-            ArrayList<Employee> list = pu.getListEmployee();
-            request.setAttribute("listE", list);
-        }
+        processRequest(request, response);
     }
 
     /**

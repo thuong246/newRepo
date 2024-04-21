@@ -140,6 +140,11 @@
                                                 <button type="submit" class="btn btn-primary">Add</button>
                                             </div>
                                         </div><!--end col-->
+                                        <div class="col-lg-3">
+                                            <div class="d-grid" style="margin-top: 10px">
+                                                <a href="/ProjectManagement/task" class="btn btn-primary">Back</a>
+                                            </div>
+                                        </div><!--end col-->
                                     </div><!--end row-->
                                 </form>
                             </div>

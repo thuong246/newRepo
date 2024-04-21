@@ -64,6 +64,42 @@
         <servlet-name>WorkProgress</servlet-name>
         <servlet-class>controller.WorkProgress</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LogoutController</servlet-name>
+        <servlet-class>controller.LogoutController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Report</servlet-name>
+        <servlet-class>controller.Report</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Approved</servlet-name>
+        <servlet-class>controller.Approved</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DownLoadFile</servlet-name>
+        <servlet-class>controller.DownLoadFile</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreateNewApp</servlet-name>
+        <servlet-class>controller.CreateNewApp</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UploadFileServlet</servlet-name>
+        <servlet-class>com.example.UploadFileServlet</servlet-class>
+        <multipart-config>
+            <file-size-threshold>2621440</file-size-threshold>
+            <!-- 2MB -->
+            <max-file-size>10485760</max-file-size>
+            <!-- 10MB -->
+            <max-request-size>52428800</max-request-size>
+            <!-- 50MB -->
+        </multipart-config>
+    </servlet>
+    <servlet>
+        <servlet-name>ApprovalController</servlet-name>
+        <servlet-class>controller.ApprovalController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -127,6 +163,34 @@
     <servlet-mapping>
         <servlet-name>WorkProgress</servlet-name>
         <url-pattern>/workprogress</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutController</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Report</servlet-name>
+        <url-pattern>/report</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Approved</servlet-name>
+        <url-pattern>/approved</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DownLoadFile</servlet-name>
+        <url-pattern>/downloadFile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateNewApp</servlet-name>
+        <url-pattern>/create</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UploadFileServlet</servlet-name>
+        <url-pattern>/UploadFileServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ApprovalController</servlet-name>
+        <url-pattern>/approval</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -37,22 +37,52 @@ public class UserDao extends BaseDao {
         return false;
     }
 
+    public String getRoleNameByUsername(String username) {
+        String roleName = null;
+        try {
+            String sql = "SELECT r.role_name "
+                    + "FROM Role r "
+                    + "INNER JOIN Users u ON r.user_id = u.user_id "
+                    + "WHERE u.username = ?";
+            pstm = connection.prepareStatement(sql);
+            pstm.setString(1, username);
+            ResultSet rs = pstm.executeQuery();
+            if (rs.next()) {
+                roleName = rs.getString("role_name");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return roleName;
+    }
+
     public ArrayList<Employee> getListEmployee() {
         ArrayList<Employee> list = new ArrayList<>();
         try {
-            String strSelect = "Select * from Employees";
+
+            String strSelect = "SELECT e.employee_id, e.employee_code, e.employee_name, ee.department_name, ee.position_name\n"
+                    + "FROM Employees e\n"
+                    + "JOIN Employee_E ee ON e.employee_id = ee.Employee_id;";
             pstm = connection.prepareStatement(strSelect);
             rs = pstm.executeQuery();
             while (rs.next()) {
                 String emp_id = rs.getString(1);
                 String emp_code = rs.getString(2);
                 String emp_name = rs.getString(3);
-                list.add(new Employee(emp_id, emp_code, emp_name));
+                String position = rs.getString(5);
+                String deparment = rs.getString(4);
+                list.add(new Employee(emp_id, emp_code, emp_name,deparment, position));
             }
         } catch (Exception e) {
             System.out.println("getListEmployee:" + e.getMessage());
         }
         return list;
+    }
+
+    public static void main(String[] args) {
+        UserDao u = new UserDao();
+        String u2 = u.getRoleNameByUsername("admin@gmail.com");
+        System.out.println(u2);
     }
 
 }

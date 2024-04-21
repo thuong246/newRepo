@@ -3,20 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Desktop/Job1/ProjectManagement/web/view/homepage.jsp</file>
-            <file>file:/D:/Desktop/Job1/ProjectManagement/web/view/risk.jsp</file>
-            <file>file:/D:/Desktop/Job1/ProjectManagement/web/view/task.jsp</file>
-            <file>file:/D:/Desktop/Job1/ProjectManagement/web/view/addrisk.jsp</file>
-            <file>file:/D:/Desktop/Job1/ProjectManagement/web/view/updaterisk.jsp</file>
-            <file>file:/D:/Desktop/Job1/ProjectManagement/web/view/addproject.jsp</file>
-            <file>file:/D:/Desktop/Job1/ProjectManagement/web/view/menu.jsp</file>
-            <file>file:/D:/Desktop/Job1/ProjectManagement/web/view/forgotpassword.jsp</file>
-            <file>file:/D:/Desktop/Job1/ProjectManagement/web/view/updatetask.jsp</file>
-            <file>file:/D:/Desktop/Job1/ProjectManagement/web/view/addtask.jsp</file>
-            <file>file:/D:/Desktop/Job1/ProjectManagement/web/view/project.jsp</file>
-            <file>file:/D:/Desktop/Job1/ProjectManagement/web/view/headersidebar.jsp</file>
-            <file>file:/D:/Desktop/Job1/ProjectManagement/web/view/login.jsp</file>
-            <file>file:/D:/Desktop/Job1/ProjectManagement/web/view/updateproject.jsp</file>
+            <file>file:/D:/Desktop/newRepo/ProjectManagement/web/WEB-INF/web.xml</file>
+            <file>file:/D:/Desktop/newRepo/ProjectManagement/src/java/controller/UpdateEmployee.java</file>
+            <file>file:/D:/Desktop/newRepo/ProjectManagement/src/java/controller/AddRiskController.java</file>
+            <file>file:/D:/Desktop/newRepo/ProjectManagement/src/java/dao/UserDao.java</file>
+            <file>file:/D:/Desktop/newRepo/ProjectManagement/src/java/controller/EmployeeController.java</file>
+            <file>file:/D:/Desktop/newRepo/ProjectManagement/web/view/menu.jsp</file>
+            <file>file:/D:/Desktop/newRepo/ProjectManagement/web/view/headersidebar.jsp</file>
+            <file>file:/D:/Desktop/newRepo/ProjectManagement/src/java/model/Employee.java</file>
+            <file>file:/D:/Desktop/newRepo/ProjectManagement/web/view/employee.jsp</file>
         </group>
     </open-files>
 </project-private>

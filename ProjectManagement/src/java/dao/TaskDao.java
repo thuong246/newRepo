@@ -236,4 +236,13 @@ public class TaskDao extends BaseDao {
             e.printStackTrace();
         }
     }
+    public void delete(String id) {
+        String sql = "DELETE FROM Tasks WHERE task_id = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, id);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

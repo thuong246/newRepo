@@ -4,23 +4,36 @@
  */
 package controller;
 
+import dao.ApproveDao;
 import dao.ProjectDao;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
+import javax.servlet.http.Part;
+import model.Approve;
 import model.Employee;
-import model.Project;
 
 /**
  *
- * @author ADMIN
+ * @author Admin
  */
-public class UpdateProject extends HttpServlet {
+@MultipartConfig(
+    fileSizeThreshold = 1024 * 1024 * 2,  // 2MB
+    maxFileSize = 1024 * 1024 * 10,       // 10MB
+    maxRequestSize = 1024 * 1024 * 50      // 50MB
+)
+public class CreateNewApp extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +52,10 @@ public class UpdateProject extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet UpdateProject</title>");
+            out.println("<title>Servlet CreateNewApp</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet UpdateProject at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet CreateNewApp at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,17 +73,10 @@ public class UpdateProject extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (request.getParameter("mod") != null && request.getParameter("mod").equals("1")) {
-            ProjectDao p = new ProjectDao();
-            String project_id = request.getParameter("project_id");
-            Project listbyid = p.getProjectById(project_id);
-            request.setAttribute("listbyid", listbyid);
-            ArrayList<String> list = p.getAllStatus();
-            request.setAttribute("status", list);
-            ArrayList<String> list3 = p.getAllEmployeeCode();
-            request.setAttribute("Empcode", list3);
-            request.getRequestDispatcher("view/updateproject.jsp").forward(request, response);
-        }
+        ProjectDao pdao = new ProjectDao();
+        ArrayList<String> list3 = pdao.getAllEmployeeCode();
+        request.setAttribute("Empcode", list3);
+        request.getRequestDispatcher("view/create.jsp").forward(request, response);
     }
 
     /**
@@ -82,34 +88,39 @@ public class UpdateProject extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
-        if (action.equals("update")) {
-            ProjectDao pdao = new ProjectDao();
-            String project_id = request.getParameter("project_id");
-            String project_code = request.getParameter("pcode");
-            String project_name = request.getParameter("pname");
-            String start_date = request.getParameter("startdate");
-            String end_date = request.getParameter("enddate");
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+            Part filePart = request.getPart("file");
+            String approve_id = request.getParameter("approve_id");
+            String description = request.getParameter("description");
+            String enddate = request.getParameter("enddate");
+            InputStream fileContent = filePart.getInputStream();
+            byte[] fileData = convertInputStreamToByteArray(fileContent);
             String employee_code = request.getParameter("empcode");
-            String status = request.getParameter("status");
             Employee e = new Employee();
             e.setEmployee_code(employee_code);
-            Project p = new Project(project_id, project_code, project_name, start_date, end_date, status, e);
-            pdao.updateProject(p);
-            HttpSession session = request.getSession();
-            session.setAttribute("toast", "true");
-            ArrayList<Project> list = pdao.getListProject();
-            request.setAttribute("listproject", list);
-            request.getRequestDispatcher("view/project.jsp").forward(request, response);
-        }if (action.equals("delete")) {
-            ProjectDao pdao = new ProjectDao();
-            String project_id = request.getParameter("project_id");
-            pdao.delete(project_id);
-            ArrayList<Project> list = pdao.getListProject();
-            request.setAttribute("listproject", list);
-            request.getRequestDispatcher("view/project.jsp").forward(request, response);
+            ApproveDao approveDAO = new ApproveDao();
+            String status = "Pending";
+            Approve a = new Approve(approve_id, status, description, enddate, e, fileData);
+            approveDAO.addApprove(a);
+            String mess = "Create Success!!";
+            request.setAttribute("mess", mess);
+            request.getRequestDispatcher("view/menu.jsp").forward(request, response);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
+    }
+
+    private byte[] convertInputStreamToByteArray(InputStream inputStream) throws IOException {
+        ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
+        int bufferSize = 1024;
+        byte[] buffer = new byte[bufferSize];
+        int bytesRead;
+        while ((bytesRead = inputStream.read(buffer)) != -1) {
+            byteBuffer.write(buffer, 0, bytesRead);
+        }
+        return byteBuffer.toByteArray();
     }
 
     /**
